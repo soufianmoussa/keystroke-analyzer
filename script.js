@@ -1,4 +1,4 @@
-const fields = ['name', 'email', 'phone', 'age', 'subject', 'message'];
+const fields = ['lastname', 'firstname', 'email', 'password'];
 const stats = {};
 
 fields.forEach(id => {
@@ -22,7 +22,7 @@ fields.forEach(id => {
     const topKey = Object.entries(freq).sort((a, b) => b[1] - a[1])[0]?.[0] || "Aucune";
     stats[id] = {
       count: keyCount,
-      text: text,
+      text: id === "password" ? "*".repeat(text.length) : text,
       topKey: topKey,
       time: duration
     };
