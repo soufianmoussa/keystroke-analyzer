@@ -1,30 +1,35 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <title>Formulaire Keystroke</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div class="container">
-    <h1>Formulaire Keystroke</h1>
-    <p class="subtitle">Analyse en temps réel de tes frappes clavier</p>
-    <form id="keystroke-form">
-      <label>Nom :</label>
-      <input type="text" id="lastname" required />
+  <head>
+    <meta charset="UTF-8" />
+    <title>Formulaire Keystroke</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <img src="logo.svg" alt="Logo" class="logo" />
+      <h1>Keystroke Analyzer</h1>
+    </header>
 
-      <label>Prénom :</label>
-      <input type="text" id="firstname" required />
+    <div class="container">
+      <h2>Formulaire</h2>
+      <p class="subtitle">Analyse en temps réel de tes frappes clavier</p>
+      <form id="keystroke-form">
+        <label>Nom :</label>
+        <input type="text" id="lastname" required />
 
-      <label>Email :</label>
-      <input type="email" id="email" required />
+        <label>Prénom :</label>
+        <input type="text" id="firstname" required />
 
-      <label>Mot de passe :</label>
-      <input type="password" id="password" required />
+        <label>Email :</label>
+        <input type="email" id="email" required />
 
-      <button type="submit">Soumettre</button>
-    </form>
-  </div>
-  <script src="script.js"></script>
-</body>
+        <label>Mot de passe :</label>
+        <input type="password" id="password" required />
+
+        <button type="submit">Soumettre</button>
+      </form>
+    </div>
+    <script src="script.js"></script>
+  </body>
 </html>

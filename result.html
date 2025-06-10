@@ -1,37 +1,45 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <title>Résumé Keystroke</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
-  <div class="container">
-    <h1>📊 Résumé des frappes clavier</h1>
-    <div id="results"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Résumé Keystroke</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <img src="logo.svg" alt="Logo" class="logo" />
+      <h1>Keystroke Analyzer - Résumé</h1>
+    </header>
 
-    <canvas id="keystrokeChart" style="max-width: 100%; margin-top: 40px;"></canvas>
+    <div class="container">
+      <h2>📊 Résumé des frappes clavier</h2>
+      <div id="results"></div>
 
-    <a href="index.html">↩ Recommencer</a>
-  </div>
+      <canvas
+        id="keystrokeChart"
+        style="max-width: 100%; margin-top: 40px"
+      ></canvas>
 
-  <script>
-    const data = JSON.parse(localStorage.getItem("keystrokeData") || "{}");
-    const container = document.getElementById("results");
+      <a href="index.html" class="button-link">↩ Recommencer</a>
+    </div>
 
-    const labels = [];
-    const counts = [];
-    const times = [];
+    <script>
+      const data = JSON.parse(localStorage.getItem("keystrokeData") || "{}");
+      const container = document.getElementById("results");
 
-    for (let field in data) {
-      const stats = data[field];
+      const labels = [];
+      const counts = [];
+      const times = [];
 
-      labels.push(field);
-      counts.push(stats.count);
-      times.push(stats.time.toFixed(2));
+      for (let field in data) {
+        const stats = data[field];
 
-      container.innerHTML += `
+        labels.push(field);
+        counts.push(stats.count);
+        times.push(stats.time.toFixed(2));
+
+        container.innerHTML += `
         <div class="result-block">
           <h3>${field}</h3>
           <p><strong>Texte :</strong> ${stats.text}</p>
@@ -42,40 +50,40 @@
           <p><strong>Temps (s) :</strong> ${stats.time.toFixed(2)}</p>
         </div>
       `;
-    }
-
-    // Création du graphique
-    const ctx = document.getElementById("keystrokeChart").getContext("2d");
-    const chart = new Chart(ctx, {
-      type: "bar",
-      data: {
-        labels: labels,
-        datasets: [
-          {
-            label: "Nombre de frappes",
-            data: counts,
-            backgroundColor: "#007BFF"
-          },
-          {
-            label: "Temps passé (s)",
-            data: times,
-            backgroundColor: "#28a745"
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: "bottom"
-          },
-          title: {
-            display: true,
-            text: "Statistiques par champ"
-          }
-        }
       }
-    });
-  </script>
-</body>
+
+      // Création du graphique
+      const ctx = document.getElementById("keystrokeChart").getContext("2d");
+      const chart = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: "Nombre de frappes",
+              data: counts,
+              backgroundColor: "#007BFF",
+            },
+            {
+              label: "Temps passé (s)",
+              data: times,
+              backgroundColor: "#28a745",
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: "bottom",
+            },
+            title: {
+              display: true,
+              text: "Statistiques par champ",
+            },
+          },
+        },
+      });
+    </script>
+  </body>
 </html>
