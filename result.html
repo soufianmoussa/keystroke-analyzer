@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Résumé Keystroke</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Résumé des frappes</h1>
+    <div id="results"></div>
+    <a href="index.html">↩ Recommencer</a>
+  </div>
+  <script>
+    const data = JSON.parse(localStorage.getItem("keystrokeData") || "{}");
+    const container = document.getElementById("results");
+    for (let field in data) {
+      const stats = data[field];
+      container.innerHTML += `
+        <div class="result-block">
+          <h3>${field}</h3>
+          <p><strong>Texte :</strong> ${stats.text}</p>
+          <p><strong>Nombre de frappes :</strong> ${stats.count}</p>
+          <p><strong>Touche la plus utilisée :</strong> ${stats.topKey}</p>
+          <p><strong>Temps (s) :</strong> ${stats.time.toFixed(2)}</p>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>

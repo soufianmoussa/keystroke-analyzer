@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Formulaire Keystroke</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1> Analyse de Frappe Clavier</h1>
+    <p class="subtitle">Remplis ce formulaire, puis découvre les statistiques de tes frappes clavier </p>
+    <form id="keystroke-form">
+      <label>Nom :</label>
+      <input type="text" name="name" id="name" required />
+
+      <label>Email :</label>
+      <input type="email" name="email" id="email" required />
+
+      <label>Téléphone :</label>
+      <input type="tel" name="phone" id="phone" required />
+
+      <label>Âge :</label>
+      <input type="number" name="age" id="age" min="0" required />
+
+      <label>Sujet :</label>
+      <input type="text" name="subject" id="subject" required />
+
+      <label>Message :</label>
+      <textarea name="message" id="message" required></textarea>
+
+      <button type="submit">Soumettre</button>
+    </form>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
